@@ -1,0 +1,28 @@
+{
+  "name": "NewsScraper",
+  "version": "1.0.0",
+  "description": "App that scrapes articles from the internet.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tblane88/NewsScraper.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tblane88/NewsScraper/issues"
+  },
+  "homepage": "https://github.com/tblane88/NewsScraper#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.0",
+    "mongoose": "^5.3.15",
+    "morgan": "^1.9.1"
+  }
+}
