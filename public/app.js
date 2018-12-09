@@ -1,11 +1,14 @@
 $(function() {
     
     displayPage();
+    setupEventHandlers();
 })
 
 
 function displayPage() {
     renderTemplate();
+    setupEventHandlers();
+
 }
 
 function renderTemplate(data) {
@@ -13,4 +16,26 @@ function renderTemplate(data) {
     var template = Handlebars.compile(source);
     var html = template(data);
     $("#app").html(html);
+}
+
+function setupEventHandlers() {
+    $("#scrape").on("click", function(event) {
+        event.preventDefault();
+        
+        $.get("/scrape").then(
+            function(articles) {
+              renderTemplate({articles: articles});  
+            }
+        )
+    })
+
+
+
+
+
+
+
+
+
+
 }

@@ -36,28 +36,29 @@ mongoose.connect(MONGODB_URI, {useNewUrlParser: true});
 
 // A GET route for scraping the echoJS website
 app.get("/scrape", function(req, res) {
+    console.log("inside scrape");
   // First, we grab the body of the html with axios
   axios.get("http://www.theonion.com/").then(function(response) {
     // Then, we load that into cheerio and save it to $ for a shorthand selector
     var $ = cheerio.load(response.data);
-
+    console.log("inside cheerio");
     // Now, we grab every h2 within an article tag, and do the following:
-    $("article .postlist__item").each(function(i, element) {
+    $("h1 .entry-title").each(function(i, element) {
+        console.log("deep inside cheerio");
       // Save an empty result object
       var result = {};
 
       // Add the text and href of every link, and save them as properties of the result object
       result.title = $(element)
-        .find("h1")
         .text();
       result.link = $(element)
-        .find("h1")
         .children("a")
         .attr("href");
 
      result.summary = $(element)
         .find("p").text();
-
+    
+    console.log(result);
       // Create a new Article using the `result` object built from scraping
       db.Article.create(result)
         .then(function(dbArticle) {
